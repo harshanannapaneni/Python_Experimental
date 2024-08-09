@@ -1,3 +1,4 @@
 .python_experimental
 __pycache__
 .env
+expense.csv
