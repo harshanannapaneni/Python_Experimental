@@ -21,10 +21,20 @@ def add_expense(category, description, amount):
     print(f"Expense recorded:\nDate: {date}\nCategory: {category}\nDescription: {description}\nAmount{amount}\n")
 
 def view_expenses():
-    pass
+    try:
+        df = pd.read_csv(EXPENSE_FILE)
+        print(df)
+    except FileNotFoundError as e:
+        print("No expense file found for view: ",e)
 
 def view_summary():
-    pass
+    try:
+        df = pd.read_csv(EXPENSE_FILE)
+        summary = df.groupby("Category")["Amount"].sum()
+        print("Amount spent on each category!")
+        print(summary)
+    except FileNotFoundError as e:
+        print("No expense file found for summary stats: ",e)
 
 
 if __name__ == "__main__":
